@@ -1,9 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
+"""
+NOTE: Use python3 because it uses unicode by default.
+"""
+
 import os
 import json
+import sys
 
-md_file = "markdown_tweets.md"
+md_file = "MarkdownTweets.md"
 
 def tweetdir_to_markdown(dirname):
     """
@@ -52,5 +58,8 @@ def tweetfile_to_markdown(filename):
     holder.close()
 
 if __name__ == '__main__':
-    tweetdir_to_markdown("tweets")
-
+    if(len(sys.argv) == 2):
+        dirname = sys.argv[1]
+        tweetdir_to_markdown(dirname)
+    else:
+        print("Error: Directory not specified")
